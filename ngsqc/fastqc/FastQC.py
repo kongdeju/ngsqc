@@ -1,6 +1,5 @@
 
 
-
 class FastQC:
     
     def __init__(self,fq1,prefix):
