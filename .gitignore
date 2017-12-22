@@ -31,7 +31,10 @@ htmlcov/*
 .tox
 junit.xml
 coverage.xml
-
+tests/*
+!tests/*.py
+!tests/data
+ngsqc/config.py
 # Build and docs folder/files
 build/*
 dist/*
