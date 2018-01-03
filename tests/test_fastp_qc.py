@@ -1,17 +1,20 @@
 import sys
-sys.path.append("../")
+sys.path.append("/lustre/users/lilin/test_ben/qc/ngsqc/ngsqc/fastqc")
 
-from ngsqc.fastqc.fastp import qc
+from fastp import qc1
+from FastQC import FastQC
 
-
-fq = "data/test_R1.fq.gz"
+fq = "/lustre/users/lilin/test_ben/data_test/fastq/ERR091571_1.fastq"
 prex = "22"
 
-def test_qc():
+#def test_qc():
     
-    status = qc(fq,prex)
+#    status = qc(fq,prex)
 
-    assert status != None
+#    assert status != None
 
-
+test = FastQC(fq,prex)
+test.fastp()
+test.fastQc()
+#qc1(fq,prex)
 

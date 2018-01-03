@@ -1,4 +1,6 @@
-
+import os
+from fast_qc import qc2
+from fastp import qc1
 
 class FastQC:
     
@@ -10,17 +12,15 @@ class FastQC:
             prefix (str) : the output prefix
         
         '''
-        self.fq1 = fq1
+        self.fq1 = fq
         self.prex = prefix
+        
 
+    def fastQc(self):
+    	qc2(self.fq1,self.prex)  
 
-    def qc(self,tool):
-    
-        if tool == "fastp":
-            pass
-
-        if tool == "fastqc":
-            pass
+    def fastp(self):
+	    qc1(self.fq1,self.prex)
 
 
 

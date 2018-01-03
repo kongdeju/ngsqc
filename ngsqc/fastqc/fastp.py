@@ -1,11 +1,11 @@
 import os
-from config import fastp
+#from config import fastp
 
-def qc(fq,prefix):
+def qc1(fq,prefix):
 
     html = prefix + ".html"
 
-    cmd = "%s -Q -L -i %s -h %s " % (fastp,fq,html)
+    cmd = "fastp -Q -L -w 6 -i %s -h %s " % (fq,html)
 
     print cmd
 
