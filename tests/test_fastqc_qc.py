@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../")
 
-from ngsqc.fastqc.fastp import qc
+from ngsqc.fastqc.fast_qc import qc
 
 fqs = [
 ["data/test_R1.fq.gz","test_R1"],

@@ -1,2 +1,1 @@
-#../config.py
-fastqc = 'fastqc'
+../config.py

@@ -1,20 +1,19 @@
 import os
 from config import fastqc
 
-def qc2(fq,prefix):
+from jbiot import log
 
-    out = "./" 
+def qc(fqs,prefix):
 
-    cmd = "%s -t 6 -o %s %s " % (fastqc,out,fq)
-
-    print cmd
-
-    status = os.system(cmd)
-
-    if status :
-        return 
+    out = "%s.fastqc" % prefix
+    log.info("fastq file qc by `fastqc`",prefix) 
+    cmd = "mkdir %s" % out
+    log.run(cmd,prefix)
+    for item in fqs:
+        fq = item[0]
+        prex = item[1]
+        cmd = "%s -o %s %s " % (fastqc,out,fq)
+        log.run(cmd,prefix)    
 
     return out
-
-
     

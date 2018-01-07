@@ -1,10 +1,10 @@
 import os
-from fast_qc import qc2
-from fastp import qc1
+import fast_qc 
+import fastp 
 
 class FastQC:
     
-    def __init__(self,fq,prefix):
+    def __init__(self,fqs,prefix):
         '''init the FastQC class
         
         Args:
@@ -12,15 +12,17 @@ class FastQC:
             prefix (str) : the output prefix
         
         '''
-        self.fq1 = fq
+        self.fqs = fqs
         self.prex = prefix
         
 
-    def fastQc(self):
-    	qc2(self.fq1,self.prex)  
+    def byfastqc(self):
+    	fast_qc.qc(self.fqs,self.prex)  
 
-    def fastp(self):
-	    qc1(self.fq1,self.prex)
+    def byfastp(self):
+	    fastp.qc(self.fqs,self.prex)
+
+
 
 
 
