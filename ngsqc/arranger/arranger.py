@@ -26,8 +26,8 @@ class arranger:
         log.run(cmd,self.prefix)
 
     def arrFastp(self):
-        raw = self.prefix + ".fastqInfo.tsv"
-        tgt = "%s/fastqsInfo.tsv" % report
+        raw = self.prefix + ".fastqInfo.xls"
+        tgt = "%s/fastqsInfo.xls" % report
         cmd = "cp %s %s" % (raw,tgt)
         log.info(cmd,self.prefix)
         log.run(cmd,self.prefix)

@@ -1,5 +1,5 @@
 import os
-from config import fastp
+from config import fastp,tsv2xls
 from jbiot import log
 
 sdir = os.path.dirname(os.path.abspath(__file__))
@@ -28,6 +28,11 @@ def qc(fqs,prefix):
     
     log.info("convert fastp jsons to table ",prefix)
     cmd = "python %s %s %s" % (fp2tb,jstr,prefix)
+    log.run(cmd,prefix)
+
+    tsv = prefix + ".fastqInfo.tsv"
+    log.info("convert tsv to xls ",prefix)
+    cmd = "%s %s" % (tsv2xls,tsv)
     log.run(cmd,prefix)
 
     return out
