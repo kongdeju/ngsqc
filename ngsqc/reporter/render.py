@@ -3,6 +3,7 @@
 from jinja2 import Template
 import sys
 import os
+import xlrd
 reload(sys)
 sys.setdefaultencoding('utf-8')
 class Argsor:
@@ -10,14 +11,34 @@ class Argsor:
     def __init__(self,report):
         self.dir = report
         self.args = {}
-        self.per_base_quality() 
-   
-    def per_base_quality(self):
+        self.get_images() 
+        self.get_table()
+
+    def convert_table(self,table):
+        data = xlrd.open_workbook(table)
+        table_variable = data.sheets()[0]
+        return table_variable   
+
+    def get_images(self):
         for root,dirs,files in os.walk(report):
             for file in files:
                 absfile = os.path.join(root,file)
                 if file == "per_base_quality.png":
                     self.args["per_base_quality"] = absfile
+                if file == "per_sequence_quality.png":
+                    self.args["per_sequence_quality"] = absfile
+                if file == "per_sequence_gc_content.png":
+                    self.args["per_sequence_gc_content"] = absfile
+                if file == "per_base_sequence_content.png":
+                    self.args["per_base_sequence_content"] = absfile
+                if file == "duplication_levels.png":
+                    self.args["duplication_levels"] = absfile
+    def get_table(self):
+        for root,dirs,files in os.walk(report):
+            for file in files:
+                absfile = os.path.join(root,file)
+                if file == "fastqsInfo.xls":
+                    self.args["table3_4"] = self.convert_table(absfile)
                     return
 
     
