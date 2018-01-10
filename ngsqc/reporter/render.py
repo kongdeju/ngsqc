@@ -11,6 +11,11 @@ class Argsor:
     def __init__(self,report):
         self.dir = report
         self.args = {}
+        self.args["per_base_quality"] = []
+        self.args["per_sequence_quality"] = []
+        self.args["per_sequence_gc_content"] = []
+        self.args["per_base_sequence_content"] =[]
+        self.args["duplication_levels"] = []
         self.get_images() 
         self.get_table()
 
@@ -24,15 +29,15 @@ class Argsor:
             for file in files:
                 absfile = os.path.join(root,file)
                 if file == "per_base_quality.png":
-                    self.args["per_base_quality"] = absfile
+                    self.args["per_base_quality"].append(absfile)
                 if file == "per_sequence_quality.png":
-                    self.args["per_sequence_quality"] = absfile
+                    self.args["per_sequence_quality"].append(absfile)
                 if file == "per_sequence_gc_content.png":
-                    self.args["per_sequence_gc_content"] = absfile
+                    self.args["per_sequence_gc_content"].append(absfile)
                 if file == "per_base_sequence_content.png":
-                    self.args["per_base_sequence_content"] = absfile
+                    self.args["per_base_sequence_content"].append(absfile)
                 if file == "duplication_levels.png":
-                    self.args["duplication_levels"] = absfile
+                    self.args["duplication_levels"].append(absfile)
 
     def get_table(self):
         for root,dirs,files in os.walk(report):
