@@ -18,7 +18,7 @@ def report(reportDir,prefix):
 
     # mkdocs build html
     log.info("cp mkdocs template and index template",prefix)
-    target = prefix + "_QC_REPORT"
+    target = prefix + ".QC_REPORT"
     cmd = "cp -r %s %s" % (mkdocs_template,target)
     log.run(cmd,prefix)
     idx = os.path.join(target,"docs/index.md")
@@ -44,7 +44,7 @@ def report(reportDir,prefix):
     log.run(cmd,prefix)
 
     rawsite = os.path.join(target,"site")
-    newsite = prefix +"_HTML_Report"
+    newsite = prefix +".HTML_Report"
     
     cmd = "cp -r %s %s" % (rawsite,newsite)
     log.info(cmd,prefix)

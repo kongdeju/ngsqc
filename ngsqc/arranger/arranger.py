@@ -8,7 +8,7 @@ class arranger:
 
     def __init__(self,prefix):
         self.prefix = prefix
-        self.report = prefix + "_" + report
+        self.report = prefix + "." + report
         cmd = "mkdir %s" % self.report        
         log.info(cmd,prefix)
         log.run(cmd,prefix)
