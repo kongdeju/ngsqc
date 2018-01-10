@@ -33,6 +33,7 @@ class Argsor:
                     self.args["per_base_sequence_content"] = absfile
                 if file == "duplication_levels.png":
                     self.args["duplication_levels"] = absfile
+
     def get_table(self):
         for root,dirs,files in os.walk(report):
             for file in files:
