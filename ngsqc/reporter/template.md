@@ -1,5 +1,4 @@
 {% macro add_table(table) -%}
-
 {% for i in range(table.nrows) -%}
 {% if i == 0 -%}
 {% for cell in table.row_values(i) -%}
@@ -14,14 +13,46 @@
 {%- endfor %}|
 {%- endif %}
 {%- endfor %}
-
 {%- endmacro -%}
-
 
 {%- macro getName(path) -%}
 {% set item = path.split("/")[-3].rsplit("_",1)[0] -%}
 {{ item }}
 {%- endmacro -%}
+
+{%- macro addImg(images) %}
+<div class="clear boxCIB01">
+          <div class="ban" id="demo1">
+            <div class="ban2" id="ban_pic1">
+              <div class="prev1" id="prev1"><img src="./images/index_tab_l.png" alt="" width="28" height="51"></div>
+              <div class="next1" id="next1"><img src="./images/index_tab_r.png" alt="" width="28" height="51"></div>
+              <ul style="width: 1600px; left: 0px;">
+{% for item in images %}
+                        <li class="slide" style="float: left;"><a title="{{ getName(item) }}" href="javascript:;" class="img-toggle"><img src="{{ item }}" alt="" width="600" height="500"></a></li>
+
+{% endfor %}
+              </ul>
+            </div>
+            <div class="min_pic">
+              <div class="prev_btn1" id="prev_btn1"><img src="./images/feel3.png" alt="" width="9" height="18"></div>
+              <div class="next_btn1" id="next_btn1"><img src="./images/feel4.png" alt="" width="9" height="18"></div>
+              <div class="num clearfix smallbox" id="ban_num1">
+              <ul style="width: 184px; height: 164px; left: 35%;">
+
+{% for i in range(imagesi|length) %}
+{% if i == 0 %}
+                        <li class="slide on" style="float: left;"><a title="{{ getName(images[0]) }}}" href="javascript:;" class="img-toggle"><img src="{{ images[0]}}" alt="" width="600" height="500"></a></li>
+{% else %}
+                        <li class="slide" style="float: left;"><a title="{{ getName(images[i]) }}" href="javascript:;" class="img-toggle"><img src="{{ images[i] }}" alt="" width="600" height="500"></a></li>
+{% endif %}
+{% endfor %}
+              </ul>
+              </div>
+            </div>
+          </div>
+          <div class="mhc"></div>
+        </div>
+{% endmacro -%}
 
 ## 中科院计算所 • 北京中科晶云科技有限公司
 
@@ -108,12 +139,9 @@ b) 前10个碱基的位置也会发生较高的测序错误率，而这个长度
 
 使用FastQC工具对本课题中测序数据进行不同位置的碱基质量评估，结果如图3.2所示，横轴为测序reads长度，纵轴为质量得分
 
-{% if per_base_quality -%}
-	![]({{ per_base_quality }})
-{%- endif %}
+{{ addImg(per_base_quality) }}
 
-
-<center>图3.2 测序样本{{ getName(per_base_quality) }}的碱基质量分布</center>
+<center>图3.2 测序样本的碱基质量分布</center>
 
 >其他样本碱基质量分布见附件
 
@@ -121,11 +149,8 @@ b) 前10个碱基的位置也会发生较高的测序错误率，而这个长度
 
 使用FastQC工具对本课题中测序数据进行碱基平均质量评估，结果如图3.3所示，横轴为测序质量，纵轴reads个数。
 
-{% if per_sequence_quality -%}
-	![]({{ per_sequence_quality }})
-{%- endif %}
-
-<center>图3.3 测序样本{{ getName(per_sequence_quality) }}的reads质量统计</center>
+{{ addImg(per_sequence_quality) }}
+<center>图3.3 测序样本的reads质量统计</center>
 
 >其他样本的reads质量统计见附件
 
@@ -133,11 +158,8 @@ b) 前10个碱基的位置也会发生较高的测序错误率，而这个长度
 
 使用FastQC工具对本课题中测序数据进行reads GC含量分布评估，结果如图3.4所示，横轴为测序质量，纵轴reads个数。
 
-{% if per_sequence_gc_content -%}
-	![]({{ per_sequence_gc_content }})
-{%- endif %}
-
-<center>图3.4 测序样本{{- getName(per_sequence_gc_content) }}的GC含量分布</center>
+{{ addImg(per_sequence_gc_content) }}
+<center>图3.4 测序样本的GC含量分布</center>
 >其他样本的GC含量分布见附件
 
 ####3.1.5 Reads 碱基成分
@@ -146,22 +168,17 @@ b) 前10个碱基的位置也会发生较高的测序错误率，而这个长度
 
 使用FastQC工具对本课题中测序数据进行reads GC含量密度分布评估，结果如图3.5所示，横轴为reads长度，纵轴为碱基频率
 
-{% if per_base_sequence_content -%}
-	![]({{ per_base_sequence_content }})
-{%- endif %}
+{{ addImg(per_base_sequence_content) }}
 
-<center>图3.5 测序样本{{ getName(per_base_sequence_content) }}的碱基含量分布</center>
+<center>图3.5 测序样本的碱基含量分布</center>
 >其他样本的碱基含量分布见附件
 
 ####3.1.6 Duplication百分比
 
 使用FastQC工具对本课题中测序数据进行Reads重复率百分比评估，结果如图3.6所示，横轴为reads个数，纵轴为reads数占百分比。
 
-{% if duplication_levels -%}
-	![]({{ duplication_levels }})
-{%- endif %}
-
-<center>图3.6 测序样本{{ getName(duplication_levels) }}的reads重复百分比统计</center>
+{{ addImg(duplication_levels) }}
+<center>图3.6 测序样本的reads重复百分比统计</center>
 >其他样本的reads重复百分比统计见附件
 
 ####3.1.7 数据质量汇总
@@ -189,3 +206,15 @@ b) 前10个碱基的位置也会发生较高的测序错误率，而这个长度
 ###3.4 附录文件
 
 **(1).QC文件夹：** reads的质控信息统计图，可查看各类质控统计数据，比对率等。
+
+<div class="pop_up" id="demo2">
+      <div class="pop_up_xx"><img src="./images/close.png" alt="关闭" width="40" height="40"></div>
+      <div class="pop_up2" id="ban_pic2">
+        <ul style="width: 500px;">
+          <li><a href="javascript:;"><img width="500" height="500"></a>
+            <p></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
