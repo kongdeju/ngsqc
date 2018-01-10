@@ -15,12 +15,13 @@
 {%- endif %}
 {%- endfor %}
 
-{% endmacro -%}
+{%- endmacro -%}
 
-{% macro getName(path) -%}
+
+{%- macro getName(path) -%}
 {% set item = path.split("/")[-3].rsplit("_",1)[0] -%}
 {{ item }}
-{%- endmacro %}
+{%- endmacro -%}
 
 ## 中科院计算所 • 北京中科晶云科技有限公司
 
@@ -107,10 +108,84 @@ b) 前10个碱基的位置也会发生较高的测序错误率，而这个长度
 
 使用FastQC工具对本课题中测序数据进行不同位置的碱基质量评估，结果如图3.2所示，横轴为测序reads长度，纵轴为质量得分
 
-{% if per_base_quality %}
+{% if per_base_quality -%}
 	![]({{ per_base_quality }})
-{% endif %}
+{%- endif %}
 
 
 <center>图3.2 测序样本{{ getName(per_base_quality) }}的碱基质量分布</center>
 
+>其他样本碱基质量分布见附件
+
+####3.1.3碱基质量分布百分比
+
+使用FastQC工具对本课题中测序数据进行碱基平均质量评估，结果如图3.3所示，横轴为测序质量，纵轴reads个数。
+
+{% if per_sequence_quality -%}
+	![]({{ per_sequence_quality }})
+{%- endif %}
+
+<center>图3.3 测序样本{{ getName(per_sequence_quality) }}的reads质量统计</center>
+
+>其他样本的reads质量统计见附件
+
+####3.1.4 Reads GC含量分布
+
+使用FastQC工具对本课题中测序数据进行reads GC含量分布评估，结果如图3.4所示，横轴为测序质量，纵轴reads个数。
+
+{% if per_sequence_gc_content -%}
+	![]({{ per_sequence_gc_content }})
+{%- endif %}
+
+<center>图3.4 测序样本{{- getName(per_sequence_gc_content) }}的GC含量分布</center>
+>其他样本的GC含量分布见附件
+
+####3.1.5 Reads 碱基成分
+
+鉴于序列的随机性打断和G/C、A/T含量分别相等的原则，理论上每个测序循环上的GC及AT含量应分别相等(若为链特异性建库，可能会出现AT分离和/或GC分离)，且在整个测序过程基本稳定不变，呈水平线。但在现有的高通量测序技术中，PCR所用的6bp的随机引物会引起前几个位置的核苷酸组成存在一定的偏好性，这种波动属于正常情况。
+
+使用FastQC工具对本课题中测序数据进行reads GC含量密度分布评估，结果如图3.5所示，横轴为reads长度，纵轴为碱基频率
+
+{% if per_base_sequence_content -%}
+	![]({{ per_base_sequence_content }})
+{%- endif %}
+
+<center>图3.5 测序样本{{ getName(per_base_sequence_content) }}的碱基含量分布</center>
+>其他样本的碱基含量分布见附件
+
+####3.1.6 Duplication百分比
+
+使用FastQC工具对本课题中测序数据进行Reads重复率百分比评估，结果如图3.6所示，横轴为reads个数，纵轴为reads数占百分比。
+
+{% if duplication_levels -%}
+	![]({{ duplication_levels }})
+{%- endif %}
+
+<center>图3.6 测序样本{{ getName(duplication_levels) }}的reads重复百分比统计</center>
+>其他样本的reads重复百分比统计见附件
+
+####3.1.7 数据质量汇总
+
+原始测序数据经过数据过滤、错误率检查、碱基质量分布、reads质量分布、GC含量分布、PCR重复率统计、碱基含量分布等评估步骤，获得可以用于后续分析使用的clean reads。对质量评估后的数据质量进行汇总，如下表3.4所示。
+
+<center>表3.4测序文件信息</center>
+
+{{ add_table(table3_4) }}
+
+1.Fastq_name : 测序样本fastq文件名，1为左端reads，2为右端reads。
+
+2.Total_reads : 该Fastq测序数据过滤后的reads数 (即用于后续分析的数据，统计方法同Raw reads)。
+
+3.Base_count：过滤后数据中的碱基数 (Clean reads数乘以序列长度,并转化为以G为单位)。
+
+4.Error_rate：序列整体碱基错误率。
+
+5.Q20：Phred数值大于20的碱基占总体碱基的百分比。
+
+6.Q30：Phred数值大于30的碱基占总体碱基的百分比。
+
+7.GC_content : 计算碱基G和C的数量总和占总体碱基数量的百分比。
+
+###3.4 附录文件
+
+**(1).QC文件夹：** reads的质控信息统计图，可查看各类质控统计数据，比对率等。

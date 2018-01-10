@@ -7,7 +7,7 @@ dirname = os.path.join(dirname,"../")
 sys.path.append(dirname)
 from ngsqc.fastqc.FastQC import FastQC
 from ngsqc.arranger.arranger import arranger
-
+from ngsqc.reporter.reporter import report
 
 def main(fqjson,prefix):
     # load input files
@@ -25,8 +25,10 @@ def main(fqjson,prefix):
     # arranger out file to attachment
     arr = arranger(prefix)
     arr.arrange()
+    rdir = arr.report
 
-
+    # auto report
+    report(rdir,prefix)
 
 if __name__ == "__main__":
     usage = '''
