@@ -203,7 +203,7 @@ b) 前10个碱基的位置也会发生较高的测序错误率，而这个长度
 
 ###3.4 附录文件
 
-**(1).QC文件夹：** reads的质控信息统计图，可查看各类质控统计数据，比对率等。
+**(1).report文件夹：** reads的质控信息统计图，可查看各类质控统计数据，比对率等。
 
 <div class="pop_up" id="demo2">
       <div class="pop_up_xx"><img src="./images/close.png" alt="关闭" width="40" height="40"></div>
