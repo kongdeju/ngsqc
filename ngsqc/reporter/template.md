@@ -39,7 +39,7 @@
               <div class="num clearfix smallbox" id="ban_num1">
               <ul style="width: 184px; height: 164px; left: 35%;">
 
-{% for i in range(imagesi|length) %}
+{% for i in range(images|length) %}
 {% if i == 0 %}
                         <li class="slide on" style="float: left;"><a title="{{ getName(images[0]) }}}" href="javascript:;" class="img-toggle"><img src="{{ images[0]}}" alt="" width="600" height="500"></a></li>
 {% else %}
