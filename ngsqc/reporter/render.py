@@ -3,6 +3,7 @@
 from jinja2 import Template
 import sys
 import os
+import base64
 import xlrd
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -51,6 +52,8 @@ class Argsor:
 def render(template,args):
     fp = open(template)
     tem = Template(fp.read())
+    tem.globals['open'] = open
+    tem.globals['base64'] = base64.b64encode
     md = tem.render(**args)
     return md
 def main(report,template,out):
