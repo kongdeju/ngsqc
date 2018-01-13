@@ -39,19 +39,8 @@ def report(reportDir,prefix):
     log.run(cmd,prefix)
 
     site = os.path.join(target,"site")
-    cmd = "cp -r %s %s" % (reportDir,site)
-    log.info(cmd,prefix)
-    log.run(cmd,prefix)
-
-    rawsite = os.path.join(target,"site")
-    newsite = prefix +".HTML_Report"
-    
-    cmd = "cp -r %s %s" % (rawsite,newsite)
-    log.info(cmd,prefix)
-    log.run(cmd,prefix)
-
     out = prefix + ".out.tgz"
-    cmd = "tar cvzf %s %s "  % (out,newsite)  
+    cmd = "tar cvzf %s %s "  % (out,site)  
     log.info("oh yeah!!!",prefix)
     log.run(cmd,prefix)
 
