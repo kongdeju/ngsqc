@@ -20,6 +20,12 @@
 {{ item }}
 {%- endmacro -%}
 
+{% macro baseimg(img) %}
+{% set fb = open(img,'r') %}
+{% set bfb = base64(fb.read()) %}
+{{ bfb }}
+{% endmacro %}
+
 {%- macro addImg(images) %}
 <div class="clear boxCIB01">
           <div class="ban" id="demo1">
@@ -28,7 +34,7 @@
               <div class="next1" id="next1"><img src="./images/index_tab_r.png" alt="" width="28" height="51"></div>
               <ul style="width: 1600px; left: 0px;">
 {% for item in images %}
-                        <li class="slide" style="float: left;"><a title="{{ getName(item) }}" href="javascript:;" class="img-toggle"><img src="{{ item }}" alt="" width="600" height="500"></a></li>
+                        <li class="slide" style="float: left;"><a title="{{ getName(item) }}" href="javascript:;" class="img-toggle"><img src="data:image/png;base64,{{ baseimg(item) }}" alt="" width="600" height="500"></a></li>
 
 {% endfor %}
               </ul>
@@ -41,9 +47,11 @@
 
 {% for i in range(images|length) %}
 {% if i == 0 %}
-                        <li class="slide on" style="float: left;"><a title="{{ getName(images[0]) }}}" href="javascript:;" class="img-toggle"><img src="{{ images[0]}}" alt="" width="600" height="500"></a></li>
+                        <li class="slide on" style="float: left;"><a title="{{ getName(images[0]) }}}" href="javascript:;" class="img-toggle"><img src="data:image/png;base64,{{ baseimg(images[0])}}" alt="" width="600" height="500"></a></li>
 {% else %}
-                        <li class="slide" style="float: left;"><a title="{{ getName(images[i]) }}" href="javascript:;" class="img-toggle"><img src="{{ images[i] }}" alt="" width="600" height="500"></a></li>
+                        <li class="slide" style="float: left;"><a title="{{ getName(images[i]) }}" href="javascript:;" class="img-toggle"><img src="data:image/png;base64,{{ baseimg(images[i]) }}" alt="" width="600" height="500"></a></li>
+
+
 {% endif %}
 {% endfor %}
               </ul>
