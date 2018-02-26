@@ -1,7 +1,7 @@
 import os
 from config import fastqc
 
-from jbiot import log
+from jbiot.logrun import log
 
 def qc(fqs,prefix):
 

@@ -1,6 +1,6 @@
 from config import mkdocs,mkdocs_template
 import os
-from jbiot import log
+from jbiot.logrun import log
 import sys
 
 renderScript = os.path.join(os.path.dirname(os.path.abspath(__file__)),"render.py")

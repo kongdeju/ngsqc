@@ -1,6 +1,6 @@
 import os
 from config import fastp,tsv2xls
-from jbiot import log
+from jbiot.logrun import log
 
 sdir = os.path.dirname(os.path.abspath(__file__))
 fp2tb = os.path.join(sdir,"fastp2table.py")

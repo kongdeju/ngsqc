@@ -1,6 +1,6 @@
 
 import config
-from jbiot import log
+from jbiot.logrun import log
 
 report = "report"
 
