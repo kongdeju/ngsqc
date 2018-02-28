@@ -10,7 +10,7 @@
 
 import sys
 from setuptools import setup
-
+import os
 def readfile(filename):
     with open(filename) as f:
         return f.read()
