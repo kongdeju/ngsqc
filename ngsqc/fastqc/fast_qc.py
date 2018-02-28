@@ -1,6 +1,8 @@
 import os
-from config import fastqc
-
+try:
+    from config import fastqc
+except:
+    fastqc = "fastqc"
 from jbiot.logrun import log
 
 def qc(fqs,prefix):

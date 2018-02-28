@@ -1,5 +1,9 @@
 import os
-from config import fastp,tsv2xls
+try:
+    from config import fastp,tsv2xls
+except:
+    fastp = "fastp"
+    tsv2xls = "tsv2xls"
 from jbiot.logrun import log
 
 sdir = os.path.dirname(os.path.abspath(__file__))

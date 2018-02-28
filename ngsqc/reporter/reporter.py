@@ -1,4 +1,7 @@
-from config import mkdocs
+try:
+    from config import mkdocs
+except:
+    mkdocs = "mkdocs"
 import os
 from jbiot.logrun import log
 import sys

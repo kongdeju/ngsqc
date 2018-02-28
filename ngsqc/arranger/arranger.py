@@ -1,5 +1,4 @@
 
-import config
 from jbiot.logrun import log
 
 report = "report"
