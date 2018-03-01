@@ -10,6 +10,11 @@ sdir = os.path.dirname(os.path.abspath(__file__))
 fp2tb = os.path.join(sdir,"fastp2table.py")
 
 def qc(fqs,prefix):
+    '''
+    information for qc
+
+    '''
+
 
     out = "%s.fastp" % prefix
     cmd = "mkdir %s" % out
