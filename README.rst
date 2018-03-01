@@ -1,7 +1,12 @@
 =====
 ngsqc
 =====
+.. image:: https://www.travis-ci.org/kongdeju/ngsqc.svg?branch=master
+       :target: https://www.travis-ci.org/kongdeju/ngsqc
+.. image:: https://readthedocs.org/projects/ngsqc/badge/?version=latest
+   :target: http://ngsqc.readthedocs.io/en/latest/?badge=latest
 
+:alt: Documentation Status
 
 Add a short description here!
 
