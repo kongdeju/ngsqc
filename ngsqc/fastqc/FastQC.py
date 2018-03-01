@@ -1,3 +1,5 @@
+"""This is the beginning of Fastq
+"""
 import os
 import fast_qc 
 import fastp 
@@ -13,16 +15,17 @@ class FastQC:
     """
     
     def __init__(self,fqs,prefix):
-        
         self.fqs = fqs
         self.prex = prefix
         
 
     def byfastqc(self):
-    	fast_qc.qc(self.fqs,self.prex)  
+        fast_qc.qc(self.fqs,self.prex)  
 
     def byfastp(self):
-	    fastp.qc(self.fqs,self.prex)
+	"""the docstring is cool
+    """    
+        fastp.qc(self.fqs,self.prex)
 
 
 
