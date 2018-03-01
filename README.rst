@@ -6,7 +6,6 @@ ngsqc
 .. image:: https://readthedocs.org/projects/ngsqc/badge/?version=latest
    :target: http://ngsqc.readthedocs.io/en/latest/?badge=latest
 
-:alt: Documentation Status
 
 Add a short description here!
 
