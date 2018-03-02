@@ -6,17 +6,18 @@ report = "report"
 
 
 class arranger:
-    """Here is some other description...
-
-        Args:
-            prefix (dict): some description of this dict
+    """
+    Here is some other description...
+    ===================================
+    Args:
+        prefix (dict): some description of this dict
                 {
                 "key1": "...."
                 "key2": "..."
                 }
 
-        Returns:
-            dict : some description of this dict
+    Returns:
+        dict : some description of this dict
 
     """
 
