@@ -4,23 +4,9 @@ from jbiot.logrun import log
 report = "report"
 
 
-'''
-This is arranger:
-
-=================
-
-i will add some description here
-....
-
-'''
 
 class arranger:
-    """
-    Here is some else
-    """
-
-    def __init__(self,prefix):
-        """Here is some other description...
+    """Here is some other description...
 
         Args:
             prefix (dict): some description of this dict
@@ -32,7 +18,10 @@ class arranger:
         Returns:
             dict : some description of this dict
 
-        """
+    """
+
+
+    def __init__(self,prefix):
 
         self.prefix = prefix
         self.report = prefix + "." + report
